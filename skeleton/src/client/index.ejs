@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Starship Configurator</title>
+</head>
+<body>
+<% for(var i = 0; i < htmlWebpackPlugin.files.js.length; i++) { %>
+  <script type="text/javascript" src="<%= htmlWebpackPlugin.files.js[i] %>"></script>
+<% } %>
+
+<div class="container">
+  <header class="row">
+    <div class="col-sm-12">
+      <%= htmlWebpackPlugin.options.fragments.blue %>
+    </div>
+  </header>
+  <div class="row">
+    <main class="col-md-8">
+      <%= htmlWebpackPlugin.options.fragments.red %>
+    </main>
+    <aside class="col-md-4">
+      <%= htmlWebpackPlugin.options.fragments.green %>
+    </aside>
+  </div>
+</div>
+</body>
+</html>

@@ -14,21 +14,13 @@ module.exports = {
       test: /\.js?$/,
       include: path.join(__dirname, 'src'),
       loader: 'babel-loader'
-    }, {
-      test: /\.css$/,
-      use: ['style-loader', 'css-loader']
     }]
-  },
-  externals: {
-    react: ['React'],
-    'react-dom': ['ReactDOM']
   },
   plugins: [
     new Dotenv(),
     new CleanWebpackPlugin(path.join(__dirname, 'dist')),
     new HtmlWebpackPlugin({
-      teamBlue: '<%- teamBlue %>',
-      template: path.join(__dirname, 'src', 'client', 'index.ejs'),
+      template: path.join(__dirname, 'src', 'client', 'public', 'index.ejs'),
       filename: 'index.ejs'
     }),
     new HashOutput(),

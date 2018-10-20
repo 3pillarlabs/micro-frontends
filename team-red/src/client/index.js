@@ -1,7 +1,7 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
 
-import Spaceships from './components/Spaceships/Spaceships';
+import Spaceships from './components/Spaceships';
 
 const app = document.getElementById('team-red-app');
 

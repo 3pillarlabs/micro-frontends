@@ -15,9 +15,10 @@
     "dotenv": "6.1.0",
     "ejs": "2.6.1",
     "express": "4.16.4",
+    "ignore-styles": "5.0.1",
+    "prop-types": "15.6.2",
     "react": "16.5.2",
-    "react-dom": "16.5.2",
-    "ignore-styles": "5.0.1"
+    "react-dom": "16.5.2"
   },
   "devDependencies": {
     "@babel/core": "7.1.2",

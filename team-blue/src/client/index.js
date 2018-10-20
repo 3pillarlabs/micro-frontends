@@ -1,8 +1,21 @@
-import React from 'react';
-import { hydrate } from 'react-dom';
+import { getPayload, isBuySpaceship } from './core/BuySpaceshipEvent';
+import { addToFleet, getFleet } from './core/Fleet';
+import isValidSpaceship from './core/isValidSpaceship';
+import createFleetUpdatedEvent from './core/createFleetUpdatedEvent';
 
-import Checkout from './components/Checkout/Checkout';
+const onMessage = (event) => {
+  if (isBuySpaceship(event)) {
+    const maybeSpaceship = getPayload(event);
 
-const app = document.getElementById('team-blue-app');
+    if (isValidSpaceship(maybeSpaceship)) {
+      addToFleet(maybeSpaceship);
 
-hydrate(<Checkout />, app);
+      window.postMessage(
+        createFleetUpdatedEvent(getFleet()),
+        process.env.SKELETON_URL
+      );
+    }
+  }
+};
+
+window.addEventListener('message', onMessage.bind(this));

@@ -28,7 +28,7 @@ module.exports = {
     new CleanWebpackPlugin(path.join(__dirname, 'dist')),
     new HtmlWebpackPlugin({
       teamGreen: '<%- teamGreen %>',
-      template: path.join(__dirname, 'src', 'client', 'index.ejs'),
+      template: path.join(__dirname, 'src', 'client', 'public', 'index.ejs'),
       filename: 'index.ejs'
     }),
     new HashOutput(),

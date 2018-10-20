@@ -29,7 +29,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       teamRed: '<%- teamRed %>',
       spaceships: '<%- spaceships %>',
-      template: path.join(__dirname, 'src', 'client', 'index.ejs'),
+      template: path.join(__dirname, 'src', 'client', 'public', 'index.ejs'),
       filename: 'index.ejs'
     }),
     new HashOutput(),

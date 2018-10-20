@@ -5,19 +5,22 @@ import path from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 
-import RelatedProducts from './client/components/RelatedProducts/RelatedProducts';
+import Fleet from './client/components/Fleet';
 
-const app = express()
-  .use(express.static(path.join('dist')))
+const server = express();
+
+server.use(express.static(path.join('dist')));
+
+server
   .set('view engine', 'ejs')
   .set('views', path.resolve('dist'));
 
-app.get('/*', (req, res) => {
+server.get('/*', (req, res) => {
   res.render('index', {
-    teamGreen: renderToString(<RelatedProducts />)
+    teamGreen: renderToString(<Fleet />)
   });
 });
 
-app.listen(process.env.PORT, () => {
+server.listen(process.env.PORT, () => {
   console.log(`TeamGreen app is listening on port: ${process.env.NODE_ENV}`);
 });

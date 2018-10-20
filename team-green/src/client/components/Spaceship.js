@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Spaceship = ({
-  id, name, price, stock, url, buyButtonClick
-}) => (
-  <div className="card">
+const Spaceship = ({ name, price, url }) => (
+  <div className="card mb-3">
     <img
       className="card-img-top"
       src={url}
@@ -15,34 +13,18 @@ const Spaceship = ({
     </div>
     <ul className="list-group list-group-flush">
       <li className="list-group-item">
-        Stock:&nbsp;
-        {stock}
-      </li>
-      <li className="list-group-item">
         Price:&nbsp;
         {price}
         $
       </li>
     </ul>
-    <div className="card-body">
-      <button
-        type="button"
-        className="btn btn-primary"
-        onClick={() => buyButtonClick(id)}
-      >
-        Buy
-      </button>
-    </div>
   </div>
 );
 
 Spaceship.propTypes = {
-  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  stock: PropTypes.number.isRequired,
-  url: PropTypes.string.isRequired,
-  buyButtonClick: PropTypes.func.isRequired
+  url: PropTypes.string.isRequired
 };
 
 export default Spaceship;

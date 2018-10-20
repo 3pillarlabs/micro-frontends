@@ -26,7 +26,7 @@ module.exports = {
         red: '<%- teamRed %>',
         green: '<%- teamGreen %>'
       },
-      template: path.join(__dirname, 'src', 'client', 'index.ejs'),
+      template: path.join(__dirname, 'src', 'client', 'public', 'index.ejs'),
       filename: 'index.ejs',
       inject: false
     }),

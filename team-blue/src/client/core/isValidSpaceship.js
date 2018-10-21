@@ -6,6 +6,7 @@ const isValidSpaceship = spaceship => (
   && isString(spaceship.name)
   && isNumber(spaceship.price)
   && isString(spaceship.url)
+  && isNumber(spaceship.quantity)
 );
 
 export default isValidSpaceship;

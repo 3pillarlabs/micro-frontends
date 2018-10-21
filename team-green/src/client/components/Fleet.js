@@ -6,9 +6,7 @@ import Spaceship from './Spaceship';
 export default class Fleet extends React.Component {
   constructor() {
     super();
-    this.state = {
-      fleet: []
-    };
+    this.state = {};
   }
 
   componentDidMount() {
@@ -28,9 +26,17 @@ export default class Fleet extends React.Component {
     return (
       <div>
         <h1>Your Fleet</h1>
+        {
+          fleet && (
+            <h2>
+              Used budget:&nbsp;
+              {fleet.usedBudget}
+            </h2>
+          )
+        }
         <div className="card-columns">
           {
-            fleet.map(spaceship => (
+            fleet && fleet.spaceships.map(spaceship => (
               <Spaceship
                 {...spaceship}
                 key={spaceship.id}

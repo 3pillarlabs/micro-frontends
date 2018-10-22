@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Spaceship = ({ name, price, url }) => (
+import './Spaceship.css';
+
+const Spaceship = ({ name, url, quantity }) => (
   <div className="card mb-3">
+    <div className="spaceship__quantity bg-primary">{quantity}</div>
     <img
       className="card-img-top"
       src={url}
@@ -13,8 +16,8 @@ const Spaceship = ({ name, price, url }) => (
 
 Spaceship.propTypes = {
   name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired
 };
 
 export default Spaceship;

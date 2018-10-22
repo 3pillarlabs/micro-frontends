@@ -1,11 +1,13 @@
 import React from 'react';
 
-import { getPayload, isFleetUpdated } from '../core/FleetUpdatedEvent';
-import Spaceship from './Spaceship';
-import UsedBudget from './UsedBudget/UsedBudget';
-import MaxBudget from './MaxBudget/MaxBudget';
-import Might from './Might/Might';
-import FleetStatus from './FleetStatus';
+import './Fleet.css';
+
+import { getPayload, isFleetUpdated } from '../../core/FleetUpdatedEvent';
+import Spaceship from '../Spaceship/Spaceship';
+import UsedBudget from '../UsedBudget/UsedBudget';
+import MaxBudget from '../MaxBudget/MaxBudget';
+import Might from '../Might/Might';
+import FleetStatus from '../FleetStatus';
 
 export default class Fleet extends React.Component {
   constructor() {
@@ -38,7 +40,7 @@ export default class Fleet extends React.Component {
             </FleetStatus>
           )
         }
-        <div className="card-columns">
+        <div className="fleet__card-columns card-columns">
           {
             fleet && fleet.spaceships.map(spaceship => (
               <Spaceship

@@ -1,7 +1,7 @@
 import incrementSpaceshipQuantity from './incrementSpaceshipQuantity';
 
 let fleet = {
-  maxBudget: 6000,
+  maxBudget: 20000,
   usedBudget: 0,
   spaceships: []
 };
@@ -26,8 +26,7 @@ const addExistingSpaceship = (indexOfSpaceship) => {
     spaceships: [
       ...fleet.spaceships.slice(0, indexOfSpaceship),
       {
-        ...fleet.spaceships[indexOfSpaceship],
-        quantity: incrementSpaceshipQuantity(fleet.spaceships[indexOfSpaceship])
+        ...incrementSpaceshipQuantity(fleet.spaceships[indexOfSpaceship])
       },
       ...fleet.spaceships.slice(indexOfSpaceship + 1)
     ]

@@ -5,7 +5,7 @@ import path from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 
-import Fleet from './client/components/Fleet';
+import Fleet from './client/components/Fleet/Fleet';
 
 const server = express();
 

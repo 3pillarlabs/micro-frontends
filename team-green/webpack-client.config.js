@@ -1,10 +1,10 @@
 require('dotenv').config();
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HashOutput = require('webpack-plugin-hash-output');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -17,6 +17,15 @@ module.exports = {
     }, {
       test: /\.css$/,
       loaders: ['style-loader', 'css-loader']
+    }, {
+      test: /\.(png|svg|jpg|gif)$/,
+      use: [{
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: '/assets/'
+        }
+      }]
     }]
   },
   externals: {
@@ -25,24 +34,23 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
-    new CleanWebpackPlugin(path.join(__dirname, 'dist')),
     new HtmlWebpackPlugin({
       teamGreen: '<%- teamGreen %>',
       template: path.join(__dirname, 'src', 'client', 'public', 'index.ejs'),
       filename: 'index.ejs'
     }),
     new HashOutput(),
-    new CopyWebpackPlugin([
-      {
-        from: 'src/client/assets/*',
-        to: path.join(__dirname, 'dist', 'assets'),
-        flatten: true
-      }
-    ])
+    new WebpackShellPlugin({
+      onBuildEnd: ['npm run build:server']
+    }),
+    new CleanWebpackPlugin([path.join(__dirname, 'dist', 'client')])
   ],
   output: {
-    filename: '[name].[chunkhash].js',
-    path: path.join(__dirname, 'dist'),
+    filename: '[name].js',
+    path: path.join(__dirname, 'dist', 'client'),
     publicPath: `${process.env.PUBLIC_PATH}:${process.env.PORT}`
+  },
+  watchOptions: {
+    ignored: /node_modules/
   }
 };

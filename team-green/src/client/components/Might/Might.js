@@ -7,7 +7,7 @@ const Might = ({ might }) => (
   <div className="max-budget bg-success">
     Might:&nbsp;
     {might}
-    &nbsp;Points
+    &nbsp;points
   </div>
 );
 

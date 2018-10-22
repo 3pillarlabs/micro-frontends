@@ -15,5 +15,5 @@ server.get('/*', (req, res) => {
 });
 
 server.listen(process.env.PORT, () => {
-  console.log(`TeamBlue app is listening on port: ${process.env.NODE_ENV}`);
+  console.log(`TeamBlue app is listening on port: ${process.env.PORT}`);
 });

@@ -1,35 +1,29 @@
 import 'dotenv/config';
 import 'ignore-styles';
-import path from 'path';
 import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
+import path from 'path';
 
-import SpaceshipsRouter from './SpaceshipsRouter';
-import getRenderedSpaceships from './getRenderedSpaceships';
 import getSpaceships from './getSpaceships';
+import getRenderedApp from './getRenderedApp';
 
 const server = express();
 
-server
-  .use(cors())
-  .use(bodyParser.json())
-  .use(express.static(path.join('dist')))
-  .use('/assets', express.static(path.join('src', 'server', 'assets')));
+server.use(express.static(path.join('dist')));
 
 server
   .set('view engine', 'ejs')
   .set('views', path.join('dist'));
 
-server
-  .get('/api/v1/spaceships', SpaceshipsRouter)
-  .get('/*', (req, res) => {
-    res.render('index', {
-      teamRed: getRenderedSpaceships(),
-      spaceships: JSON.stringify(getSpaceships())
+server.get('*', (req, res) => {
+  getSpaceships
+    .then((spaceships) => {
+      res.render('index', {
+        spaceships: JSON.stringify(spaceships),
+        teamRed: getRenderedApp(spaceships)
+      });
     });
-  });
+});
 
 server.listen(process.env.PORT, () => {
-  console.log(`TeamRed app is listening on port: ${process.env.NODE_ENV}`);
+  console.log(`TeamRed app is listening on port: ${process.env.PORT}`);
 });

@@ -8,7 +8,7 @@
     "start:server": "nodemon src/server/index.js --exec babel-node",
     "start": "run-p start:client start:server"
   },
-  "author": "3PillarGlobal",
+  "author": "Daniel Dughila",
   "repository": "https://github.com/intojs/ssr.git",
   "license": "ISC",
   "dependencies": {

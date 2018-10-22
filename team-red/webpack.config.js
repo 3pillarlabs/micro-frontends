@@ -4,7 +4,6 @@ const Dotenv = require('dotenv-webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HashOutput = require('webpack-plugin-hash-output');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -16,7 +15,7 @@ module.exports = {
       loader: 'babel-loader'
     }, {
       test: /\.css$/,
-      use: ['style-loader', 'css-loader']
+      loaders: ['style-loader', 'css-loader']
     }, {
       test: /\.(png|svg|jpg|gif)$/,
       use: [{

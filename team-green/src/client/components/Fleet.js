@@ -2,6 +2,10 @@ import React from 'react';
 
 import { getPayload, isFleetUpdated } from '../core/FleetUpdatedEvent';
 import Spaceship from './Spaceship';
+import UsedBudget from './UsedBudget/UsedBudget';
+import MaxBudget from './MaxBudget/MaxBudget';
+import Might from './Might/Might';
+import FleetStatus from './FleetStatus';
 
 export default class Fleet extends React.Component {
   constructor() {
@@ -24,14 +28,14 @@ export default class Fleet extends React.Component {
   render() {
     const { fleet } = this.state;
     return (
-      <div>
-        <h1>Your Fleet</h1>
+      <div className="pt-2">
         {
           fleet && (
-            <h2>
-              Used budget:&nbsp;
-              {fleet.usedBudget}
-            </h2>
+            <FleetStatus>
+              <Might might={fleet.usedBudget} className="fleet-status__item" />
+              <UsedBudget usedBudget={fleet.usedBudget} className="fleet-status__item" />
+              <MaxBudget maxBudget={fleet.maxBudget} className="fleet-status__item" />
+            </FleetStatus>
           )
         }
         <div className="card-columns">

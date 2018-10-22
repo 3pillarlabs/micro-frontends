@@ -1,35 +1,35 @@
 const basePath = `${process.env.PUBLIC_PATH}:${process.env.PORT}`;
 
 const getSpaceships = () => [{
-  id: 'spaceship1',
-  name: 'Spaceship 1',
+  id: 'sonJet',
+  name: 'Son Jet',
   price: 1000,
-  url: `${basePath}/assets/darth-vader.jpg`
+  url: `${basePath}/assets/sonJet.jpg`
 }, {
-  id: 'spaceship2',
-  name: 'Spaceship 2',
+  id: 'riddickCarrier',
+  name: 'Riddick Carrier',
   price: 2000,
-  url: `${basePath}/assets/darth-vader.jpg`
+  url: `${basePath}/assets/riddickCarrier.jpg`
 }, {
-  id: 'spaceship3',
-  name: 'Spaceship 3',
+  id: 'interceptor',
+  name: 'Interceptor',
   price: 3000,
-  url: `${basePath}/assets/darth-vader.jpg`
+  url: `${basePath}/assets/interceptor.png`
 }, {
-  id: 'spaceship4',
-  name: 'Spaceship 4',
+  id: 'realSteal',
+  name: 'Real Steal',
   price: 4000,
-  url: `${basePath}/assets/darth-vader.jpg`
+  url: `${basePath}/assets/realSteal.jpg`
 }, {
-  id: 'spaceship5',
-  name: 'Spaceship 5',
+  id: 'romanoffDestroyer',
+  name: 'Romanoff Destroyer',
   price: 5000,
-  url: `${basePath}/assets/darth-vader.jpg`
+  url: `${basePath}/assets/romanoffDestroyer.jpg`
 }, {
-  id: 'spaceship6',
-  name: 'Spaceship 6',
+  id: 'bigBertha',
+  name: 'Big Bertha',
   price: 6000,
-  url: `${basePath}/assets/darth-vader.jpg`
+  url: `${basePath}/assets/bigBertha.png`
 }];
 
 export default getSpaceships;

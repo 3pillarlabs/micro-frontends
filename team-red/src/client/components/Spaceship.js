@@ -16,11 +16,7 @@ const Spaceship = (props) => {
         <h5 className="card-title mb-0">{name}</h5>
       </div>
       <ul className="list-group list-group-flush">
-        <li className="list-group-item">
-          Price:&nbsp;
-          {price}
-          $
-        </li>
+        <li className="list-group-item">{price}$</li>
       </ul>
       <div className="card-body">
         <button

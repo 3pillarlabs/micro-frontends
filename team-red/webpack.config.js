@@ -17,6 +17,15 @@ module.exports = {
     }, {
       test: /\.css$/,
       use: ['style-loader', 'css-loader']
+    }, {
+      test: /\.(png|svg|jpg|gif)$/,
+      use: [{
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: '/assets/'
+        }
+      }]
     }]
   },
   externals: {
@@ -32,14 +41,7 @@ module.exports = {
       template: path.join(__dirname, 'src', 'client', 'public', 'index.ejs'),
       filename: 'index.ejs'
     }),
-    new HashOutput(),
-    new CopyWebpackPlugin([
-      {
-        from: 'src/client/assets/*',
-        to: path.join(__dirname, 'dist', 'assets'),
-        flatten: true
-      }
-    ])
+    new HashOutput()
   ],
   output: {
     filename: '[name].[chunkhash].js',

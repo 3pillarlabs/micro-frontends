@@ -8,16 +8,6 @@ const Spaceship = ({ name, price, url }) => (
       src={url}
       alt={name}
     />
-    <div className="card-body">
-      <h5 className="card-title mb-0">{name}</h5>
-    </div>
-    <ul className="list-group list-group-flush">
-      <li className="list-group-item">
-        Price:&nbsp;
-        {price}
-        $
-      </li>
-    </ul>
   </div>
 );
 

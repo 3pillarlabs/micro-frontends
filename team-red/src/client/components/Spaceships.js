@@ -4,6 +4,7 @@ import Spaceship from './Spaceship';
 import createBuySpaceshipEvent from '../core/createBuySpaceshipEvent';
 import isBudgetExceeded from '../core/isBudgetExceededEvent';
 import addQuantityToSpaceship from '../core/addQuantityToSpaceship';
+import BudgetExceeded from './BudgetExceeded/BudgetExceeded';
 
 export default class Spaceships extends React.Component {
   static onBuyBuottonClick(spaceship) {
@@ -36,13 +37,20 @@ export default class Spaceships extends React.Component {
     }
   }
 
+  onGetMoreBudget() {
+    this.setState({
+      budgetExceeded: false
+    });
+  }
+
   render() {
     const { spaceships, budgetExceeded } = this.state;
     return (
-      <div>
-        <h1>Fleet Configurator</h1>
+      <div className="pt-2">
         {
-          budgetExceeded && (<h2>Budget exceeded</h2>)
+          budgetExceeded && (
+            <BudgetExceeded getMoreBudget={() => this.onGetMoreBudget()} />
+          )
         }
         <div className="card-columns">
           {spaceships.map(spaceship => (

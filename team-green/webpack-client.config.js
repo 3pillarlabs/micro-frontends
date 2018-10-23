@@ -1,10 +1,10 @@
 require('dotenv').config();
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
-const WebpackShellPlugin = require('webpack-shell-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HashOutput = require('webpack-plugin-hash-output');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -34,6 +34,7 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
+    new CleanWebpackPlugin(path.join(__dirname, 'dist', 'client')),
     new HtmlWebpackPlugin({
       teamGreen: '<%- teamGreen %>',
       template: path.join(__dirname, 'src', 'client', 'public', 'index.ejs'),
@@ -42,8 +43,7 @@ module.exports = {
     new HashOutput(),
     new WebpackShellPlugin({
       onBuildEnd: ['npm run build:server']
-    }),
-    new CleanWebpackPlugin([path.join(__dirname, 'dist', 'client')])
+    })
   ],
   output: {
     filename: '[name].js',

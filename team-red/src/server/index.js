@@ -1,5 +1,4 @@
 import 'dotenv/config';
-import 'ignore-styles';
 import express from 'express';
 import path from 'path';
 
@@ -8,11 +7,11 @@ import getRenderedApp from './getRenderedApp';
 
 const server = express();
 
-server.use(express.static(path.join('dist')));
+server.use(express.static(path.join('dist', 'client')));
 
 server
   .set('view engine', 'ejs')
-  .set('views', path.join('dist'));
+  .set('views', path.join('dist', 'client'));
 
 server.get('*', (req, res) => {
   getSpaceships

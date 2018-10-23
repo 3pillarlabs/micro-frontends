@@ -1,9 +1,10 @@
 import 'dotenv/config';
 import express from 'express';
 import path from 'path';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
 
-import getSpaceships from './getSpaceships';
-import getRenderedApp from './getRenderedApp';
+import Spaceships from '../client/components/Spaceships';
 
 const server = express();
 
@@ -14,13 +15,17 @@ server
   .set('views', path.join('dist', 'client'));
 
 server.get('*', (req, res) => {
-  getSpaceships
-    .then((spaceships) => {
-      res.render('index', {
-        spaceships: JSON.stringify(spaceships),
-        teamRed: getRenderedApp(spaceships)
-      });
-    });
+  /**
+   * TIP
+   * If you would fetch the spaceships server side,
+   * you could add them to the spaceships array and the server would assign them
+   * as a global variable to the client app.
+   * You have node-fetch installed for such an action.
+   */
+  res.render('index', {
+    spaceships: JSON.stringify([]),
+    teamRed: renderToString(<Spaceships />)
+  });
 });
 
 server.listen(process.env.PORT, () => {

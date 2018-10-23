@@ -1,7 +1,7 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
 
-import Fleet from './components/Fleet/Fleet';
+import Fleet from './components/Fleet';
 
 const app = document.getElementById('team-green-app');
 
